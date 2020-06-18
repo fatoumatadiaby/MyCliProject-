@@ -20,13 +20,14 @@ ClI
 
 Class Recipe 
 
-recipes = []
+@recipes = []
 
 attr reader :user_name 
 
 def initialize(user_name, new_recipe)
 @user_name = user_name 
-@new_recipe >> recipes
+@new_recipe = new_recipe
+@recipe << self 
 end 
 
 
