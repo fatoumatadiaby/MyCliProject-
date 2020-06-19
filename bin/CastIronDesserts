@@ -1,7 +1,10 @@
 #!/usr/bin/env ruby
-require_relative '../lib/environment'
 
-#executable file
-Cli.new.call
-Api..call 
+require_relative "../lib/environment"
+
+Cli.new
+
+
+#calling a new instance on the cli program
+
 
