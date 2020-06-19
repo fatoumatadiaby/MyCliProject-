@@ -2,6 +2,7 @@
 require_relative "../environment"
 
 
+
 class Cli
     $name = ""
     def initialize
@@ -27,7 +28,6 @@ class Cli
     end 
     
     def print_recipe_list
-       
        puts "please wait one moment while i go get my recipe book!"
        puts ""
        puts ""
@@ -36,40 +36,41 @@ class Cli
        Api.get_recipes
        puts "Thanks for being so patient,here are your options!"
        Recipes.all.each.with_index(1) do |recipe, i|
-       puts "#{i}. #{recipe.title}"
-            # {recipe.ready_in_minutes},
-            # {recipe.servings},
-            # {recipe.source_url}"
+       puts "#{i}. Title: #{recipe.title} | Bake Time:#{recipe.ready_in_minutes} | Servings:#{recipe.servings} "
+    
+      end
+        recipe_link
     end
-    end    
-        
-    # def choose_recipe
-    #     puts "if you want more details like the serving size, and the recip "
-    # end
-    # def good_bye
-    #     puts "Come back again soon for more cast iron recipes"  
-    # end
+    
+     def recipe_link
+        response = nil
+        while response != "exit"
+        puts "To get more information about each recipe just type in the number corresponding to the recipe!"
+        puts "If you dont like what you see just type exit"
+        puts "if you would like to see the recipes again type list"
 
-        # response = gets.strip
-    #    if response == nil 
-    #     puts "looks dont have nothing compared to how these bad boys taste!"
-    #    else "well dont be shy choose a recipe #{$name}"
-    #    end
-    #    puts "to return back to the recipe menu press "
-    #    puts "to exit app type exit"
-    #    response = gets.chomp 
-    #   if response == 1 
-    #     puts 
-    #   elsif response == 2
-    #     puts 
-    #   elsif response == 3
-    #     puts 
-    #   elsif response == 4 
-    #     puts 
-    #   elsif response == 5
-    #     puts 
-    #   elsif response == 
+        response = gets.strip
+        Api.get_recipes
+        if response.to_i > 0 
+           new_recipe = Recipes.all[response.to_i-1]
+           puts "#{new_recipe.source_url}"
+        elsif response == "list"
+            print_recipe_list
+       else
+         puts "Type list or exit"
+        end
+       end
+    end
+end    
+    
+    
+    
+
+
+
+   
     
   
-end 
+  
+
 

@@ -9,23 +9,25 @@ class Api
         data = JSON.parse(response)
         
        
-        data["results"].each do |recipe_info| 
+        data["results"].collect do |recipe_info| 
             title = recipe_info["title"] 
-            ready_in_minutes = recipe_info["ready_in_minutes"] 
+            ready_in_minutes = recipe_info["readyInMinutes"] 
             servings = recipe_info["servings"]
-            source_url = recipe_info["source_url"]
-            Recipes.new(
+            source_url = recipe_info["sourceUrl"]
+        Recipes.new(
                 title: title,
                 ready_in_minutes: ready_in_minutes,
                 servings: servings,
                 source_url: source_url
                 )
-                
-            end
-           
-            
         end
+
     end
     
-    
-    # ab41c23b5cea41f59c5ac43552c91a92
+    # def self.get_recipe_details 
+    #     recipe.all.each do |recipe|
+    #     info = RestClient.get(recipe.source_url)
+    #     data = JSON.parse(info)
+    #   end 
+    # end
+end 

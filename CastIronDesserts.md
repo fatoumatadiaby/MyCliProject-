@@ -5,6 +5,32 @@
 5. user chooses number receives a recipe! 
 6. user hs the option to go baxk to home page or exit app 
 
+<!--  # def choose_recipe
+        puts "if you want more details like the serving size, and the recip "
+    end
+    # def good_bye
+    #     puts "Come back again soon for more cast iron recipes"  
+    # end
+
+    #     response = gets.strip
+    #    if response == nil 
+    #     puts "looks dont have nothing compared to how these bad boys taste!"
+    #    else "well dont be shy choose a recipe #{$name}" -->
+
+ #   if response == 1 
+    #     puts 
+    #   elsif response == 2
+    #     puts 
+    #   elsif response == 3
+    #     puts 
+    #   elsif response == 4 
+    #     puts 
+    #   elsif response == 5
+    #     puts 
+    #   elsif response == 
+    
+  
+
 
 methods to be defined 
 

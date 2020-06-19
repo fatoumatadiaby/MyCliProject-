@@ -19,7 +19,9 @@ class Recipes
 
     def self.all
         @@all
-    end     
+    end   
+    
+    
 end
 
 
@@ -30,27 +32,4 @@ end
 
 
 
-# class Recipe
-# recipe attributes 
 
-# title: 
-# readyInMinutes: 
-# servings: 
-# sourceUrl: 
- 
-# def title
-
-# end 
-
-# def readyInMinutes
-
-# end
-
-# def servings
-# end 
-
-# def source_url
-
-# end 
-
-# end
