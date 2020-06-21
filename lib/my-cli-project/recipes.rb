@@ -14,7 +14,7 @@ class Recipes
     end
     
     def save
-      @@all << self
+      @@all.push self
     end
 
     def self.all
