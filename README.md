@@ -1,8 +1,11 @@
 # MyCliProject
+welcome to your cast iron desserts app, this app provides a list of recipes to cast iron desserts, if you have a cast iron skillet and a sweet tooth this app is for you 
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/MyCliProject/`. To experiment with that code, run `bin/console` for an interactive prompt.
+ Put your Ruby code in the file `lib/MyCliProject/`. 
 
-TODO: Delete this and the text above, and describe your gem
+To experiment with that code, run `bin/MyCliProject-` for an interactive prompt.
+
+
 
 ## Installation
 
@@ -22,8 +25,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
-
+Run "bundle install" before running the Cast Iron Desserts gem when you are done then run ./bin/CastIronDesserts
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

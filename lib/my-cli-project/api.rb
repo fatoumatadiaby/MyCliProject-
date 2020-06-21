@@ -9,7 +9,7 @@ class Api
         data = JSON.parse(response)
         
        
-        data["results"].collect do |recipe_info| 
+        data["results"].each do |recipe_info| 
             title = recipe_info["title"] 
             ready_in_minutes = recipe_info["readyInMinutes"] 
             servings = recipe_info["servings"]
@@ -24,10 +24,5 @@ class Api
 
     end
     
-    # def self.get_recipe_details 
-    #     recipe.all.each do |recipe|
-    #     info = RestClient.get(recipe.source_url)
-    #     data = JSON.parse(info)
-    #   end 
-    # end
+    
 end 
