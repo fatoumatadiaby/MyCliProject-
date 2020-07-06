@@ -1,10 +1,10 @@
 #responsible for welcoming the user and dealing with input 
-require_relative "../environment"
+# require_relative "../environment"
 
 
 
 class Cli
-    $name = ""
+    $name = "" #global variable to be able to aceess and intrpolate name anywhere in my cli
     def initialize
        puts "please enter your name"
        $name = gets.strip
@@ -12,7 +12,7 @@ class Cli
        puts '░█▀▀█ █▀▀█ █▀▀ ▀▀█▀▀ 　 ▀█▀ █▀▀█ █▀▀█ █▀▀▄ 　 ░█▀▀▄ █▀▀ █▀▀ █▀▀ █▀▀ █▀▀█ ▀▀█▀▀ █▀▀ █ '
         puts '░█─── █▄▄█ ▀▀█ ──█── 　 ░█─ █▄▄▀ █──█ █──█ 　 ░█─░█ █▀▀ ▀▀█ ▀▀█ █▀▀ █▄▄▀ ──█── ▀▀█ ▀ '
          puts '░█▄▄█ ▀──▀ ▀▀▀ ──▀── 　 ▄█▄ ▀─▀▀ ▀▀▀▀ ▀──▀ 　 ░█▄▄▀ ▀▀▀ ▀▀▀ ▀▀▀ ▀▀▀ ▀─▀▀ ──▀── ▀▀▀ ▄ '
-          
+        
        welcome_user
      
     end
@@ -28,7 +28,7 @@ class Cli
      elsif response == "no"
         puts "its so sad to see you go #{$name}, come back again soon!"
      else
-        puts "Oops thats not a valid response please answer yes or no"
+        puts "please answer yes or no"
         welcome_user
      end
     end 
@@ -39,18 +39,18 @@ class Cli
        puts ""
        puts ""
        puts ""
-       Api.get_recipes 
+       Api.get_recipes
        
        puts "Thanks for being so patient,here are your options!"
-       Recipes.all.each.with_index(1) do |recipe, i|
+       Recipes.all.each.with_index(1) do |recipe, i| #al;ows me to choose what number i start my list with
        puts "#{i}. Title: #{recipe.title} | Bake Time:#{recipe.ready_in_minutes} | Servings:#{recipe.servings}"
       
       end
-       
+       recipe_link
     end
      
      def recipe_link
-        response = nil
+        response = nil #give response a default value to avoid breaking code
         while response != "exit" 
         puts "*****************************************************************" 
         puts "*****************************************************************"
