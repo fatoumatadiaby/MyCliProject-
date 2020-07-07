@@ -7,12 +7,12 @@ class Cli
     $name = "" #global variable to be able to aceess and intrpolate name anywhere in my cli
     def initialize
        puts "please enter your name"
-       $name = gets.strip
+       $name = gets.strip.downcase
        puts ". . . . . . . . . . . . . .WELCOME #{$name} TO . . . . . . . . . . . . . . . . . . . ."
        puts '░█▀▀█ █▀▀█ █▀▀ ▀▀█▀▀ 　 ▀█▀ █▀▀█ █▀▀█ █▀▀▄ 　 ░█▀▀▄ █▀▀ █▀▀ █▀▀ █▀▀ █▀▀█ ▀▀█▀▀ █▀▀ █ '
         puts '░█─── █▄▄█ ▀▀█ ──█── 　 ░█─ █▄▄▀ █──█ █──█ 　 ░█─░█ █▀▀ ▀▀█ ▀▀█ █▀▀ █▄▄▀ ──█── ▀▀█ ▀ '
          puts '░█▄▄█ ▀──▀ ▀▀▀ ──▀── 　 ▄█▄ ▀─▀▀ ▀▀▀▀ ▀──▀ 　 ░█▄▄▀ ▀▀▀ ▀▀▀ ▀▀▀ ▀▀▀ ▀─▀▀ ──▀── ▀▀▀ ▄ '
-        
+      
        welcome_user
      
     end
@@ -20,11 +20,13 @@ class Cli
    
     def welcome_user
        puts "Are you ready to start baking? yes/no"
-       response = gets.strip
+       response = gets.strip.downcase
      if response == "yes"
         puts ""
         puts "AWESOME! I can't wait for you to try these recipes #{$name}! I absolutely love them!"
-        print_recipe_list
+          Api.get_recipes
+          print_recipe_list
+      
      elsif response == "no"
         puts "its so sad to see you go #{$name}, come back again soon!"
      else
@@ -39,7 +41,7 @@ class Cli
        puts ""
        puts ""
        puts ""
-       Api.get_recipes
+     
        
        puts "Thanks for being so patient,here are your options!"
        Recipes.all.each.with_index(1) do |recipe, i| #al;ows me to choose what number i start my list with
@@ -48,7 +50,7 @@ class Cli
       end
        recipe_link
     end
-     
+      
      def recipe_link
         response = nil #give response a default value to avoid breaking code
         while response != "exit" 
@@ -61,16 +63,18 @@ class Cli
         puts ""
         puts "if you would like to see the recipes again type list"
 
-        response = gets.strip
-        Api.get_recipes 
-        if response.to_i > 0 
-           new_recipe = Recipes.all[response.to_i]   
-           puts "#{new_recipe.source_url}"
+        response = gets.strip.downcase
+        if response.to_i > 0 && response.to_i <= Recipes.all.count.to_i
+           new_recipe = Recipes.all[response.to_i-1]   
+           puts "#{new_recipe.source_url}" 
         elsif response == "list"
             print_recipe_list 
-        else 
-           puts "have a good day"
+        elsif response == "exit"
+           puts "so sad to see you go, come back again soon!" 
            exit 
+        else 
+         puts "please try again"
+         recipe_link
          end
        end
     end
